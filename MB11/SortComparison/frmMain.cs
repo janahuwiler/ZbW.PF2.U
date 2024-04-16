@@ -219,6 +219,7 @@ namespace MB11.SortComparison
                 var sa1 = (SortAlgorithm)Activator.CreateInstance(((Tuple<string, Type>)this.cboAlg1.SelectedItem).Item2);
                 sa1.Setup(array1, pnlSort1, speed, alg1);
                 ts1 = delegate () {
+                    // to know: hier wird der sort algorithm effektiv aufgerufen
                     sa1.Sort(this.array1);
                     sa1.finishDrawing();
 
