@@ -63,6 +63,22 @@ class Program
         tree.Remove(6);
         Console.WriteLine(tree);
 
+        // Console.ReadLine();
+
+        // New binary tree - aufg2
+        Console.WriteLine("tree2 Aufgabe");
+
+        var tree2 = new BinaryTree<int>();
+        tree2.AddRange(new int[] { 140, 150, 130, 110, 135, 160 });
+
+        Console.WriteLine(tree2);
+
+        tree2.Clear();
+        Console.WriteLine("----------\n");
+
+        tree2.AddRange(new int[] { 110, 130, 135, 140, 150, 160 });
+        Console.WriteLine(tree2);
+
         Console.ReadLine();
     }
 

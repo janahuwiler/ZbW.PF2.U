@@ -310,12 +310,40 @@ namespace MB13.BinaryTreeAufgabe
         private string Traverse()
         {
             var s = "";
+            var level = 0;
 
-            var mode = TraverseMode;
-
-            // TODO: implement
+            Traverse(root, level, ref s);
 
             return s;
+        }
+
+        private void Traverse(Node<T> node, int level, ref string s)
+        {
+            var reverse = TraverseMode == TraverseModeEnum.ReverseInOrder; // nur reverse-modus von unten nicht root
+
+            if (node == null)
+            {
+                return;
+            }
+
+            if (TraverseMode == TraverseModeEnum.PreOrder)
+            {
+                s += "".PadLeft(level, ' ') + node.Item + "\n";
+            }
+
+            Traverse(reverse ? node.Right : node.Left, level + 2, ref s);
+
+            if (TraverseMode == TraverseModeEnum.InOrder || TraverseMode == TraverseModeEnum.ReverseInOrder)
+            {
+                s += "".PadLeft(level, ' ') + node.Item + "\n";
+            }
+
+            Traverse(reverse ? node.Left : node.Right, level + 2, ref s);
+
+            if (TraverseMode == TraverseModeEnum.PostOrder)
+            {
+                s += "".PadLeft(level, ' ') + node.Item + "\n";
+            }
         }
     }
 }
